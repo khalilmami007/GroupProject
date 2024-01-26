@@ -99,3 +99,13 @@ background-color: rgb(13,110,253);
 .prfBtn{
     width: 200px;
 }
+.LogContainer{
+    margin: auto;
+    padding: 10px;
+    width: 600px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}

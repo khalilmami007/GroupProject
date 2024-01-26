@@ -37,7 +37,7 @@ console.log(lang1)
        axios.post('http://localhost:8000/api/skills/languages', {devId:props.devId,languages:languages,bio:bio})
                 .then(res=>{console.log(res)
                     console.log(res.data)
-                    navigate("/devs/skills/frameworks")
+                    navigate("/devs/skills/frameworks/"+res.data.Skill._id)
                 })
                 .catch(err=>{
                     const errorResponse = err.response.data.errors; 
@@ -142,7 +142,7 @@ console.log(lang1)
         
       </Row>
       <div className='btncont'>
-      <button className='skipbtn' onClick={(e)=>{navigate("/devs/skills/frameworks")}}>Skip This Step</button>
+      <button className='skipbtn' onClick={(e)=>{navigate("/devs/jobs")}}>Skip This Step</button>
     <button onClick={AddSkills}>NEXT STEP Frameworks & Librairies</button>
       </div>
 

@@ -14,13 +14,20 @@ const Register = (props) => {
     const [city, setCity]  = useState(""); 
     const [state, setState]  = useState(""); 
     const [password, setPassword]  = useState(""); 
-   //const [devId, setdevId] = useState(""); 
-    // const [languages, setLanguages]  = useState([]); 
-    // const [frameworks, setFrameworks]  = useState([]); 
-    
     const navigate = useNavigate();
     const [errors, setErrors] = useState([]);
+    const [confirmPassword, setConfirmPassword]  = useState(""); 
+    const [conpwdError, setconpwdError] = useState("");
+
     
+    const handleconPwd = (e) => {
+        setConfirmPassword(e.target.value);
+        if(e.target.value!==password)
+          { setconpwdError("check your password confirmation!");}
+        else {
+          setconpwdError("");
+          }
+      } 
     const onSubmitHandler = (e) => {
             e.preventDefault();
             axios.post('http://localhost:8000/api/devs/register', {firstName:firstName,lastName:lastName,
@@ -29,7 +36,6 @@ const Register = (props) => {
                     console.log(" le resultat est:"+res.data.Developer)
                     navigate("/devs/skills/languages")
                     props.setDevId(res.data.Developer._id)
-                    //setdevId(res.data.Developer._id)
                    console.log("dev number est:  "+res.data.Developer._id)
                 })
                 .catch(err=>{
@@ -39,7 +45,8 @@ const Register = (props) => {
                         errorArr.push(errorResponse[key].message)
                     }
                     setErrors(errorArr);
-                })            
+                })         
+                         
         }
          
 
@@ -67,7 +74,8 @@ const Register = (props) => {
                         <Form.Label>Password:</Form.Label>
                         <Form.Control type="password" onChange = {(e)=>setPassword(e.target.value)}/>
                         <Form.Label>Confirm Password:</Form.Label>
-                        <Form.Control type="password"/>
+                        <Form.Control type="password" name="ConfirmPassword" onChange = {handleconPwd} />
+                                 {conpwdError ?<p>{ conpwdError }</p> :''}
                        
                         </div>
                         
