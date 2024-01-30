@@ -27,6 +27,15 @@ module.exports.getOneSkill=(request,response)=>{
         response.json(err)
     })
 }
+module.exports.getSkillbyDev=(request,response)=>{
+    Skill.findOne({devId:request.params.devId})
+    .then(Skill=>{
+        response.json(Skill)
+    })
+    .catch(err => {
+        response.json(err)
+    })
+}
 
 module.exports.updateSkill = (request, response) => {
     Skill.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})

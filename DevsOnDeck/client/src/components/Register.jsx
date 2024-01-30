@@ -1,10 +1,13 @@
 import React, {useState} from 'react'
 import axios from 'axios';
-import { useNavigate, Link, useParams } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import RegHeader from './RegHeader';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 const Register = (props) => {
 
     const [firstName, setFirstName] = useState(""); 
@@ -61,16 +64,41 @@ const Register = (props) => {
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                         
                         <div >
-                        <Form.Label>First Name:</Form.Label>
+                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                        <Form.Label column sm="2">First Name:</Form.Label>
+                        <Col sm="4">
                         <Form.Control type="text"  onChange = {(e)=>setFirstName(e.target.value)}/>
-                        <Form.Label>Last Name:</Form.Label>
+                        </Col>
+                        <Form.Label column sm="2">Last Name:</Form.Label>
+                        <Col sm="4">
                         <Form.Control type="text" onChange = {(e)=>setLastName(e.target.value)}/>
+                        </Col>
+                        </Form.Group>
+
+                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                         <Form.Label>Email:</Form.Label>
                         <Form.Control type="text"  onChange = {(e)=>setEmail(e.target.value)}/>
+                        </Form.Group>
+                        
+                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                         <Form.Label>Adress:</Form.Label>
                         <Form.Control type="text" onChange = {(e)=>setAdress(e.target.value)}/>
-                        <Form.Label>City:</Form.Label>
-                        <Form.Control type="text" onChange = {(e)=>setCity(e.target.value)}/>
+                        </Form.Group>
+                        
+                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                        <Form.Label column sm="2">City:</Form.Label>
+                        <Col sm="6">
+                        <Form.Control  type="text"  onChange = {(e)=>setCity(e.target.value)}/>
+                        </Col>
+                        <Form.Label column sm="2">State:</Form.Label>
+                        <Col sm="2">
+                        <Form.Select  onChange = {(e)=>setState(e.target.value)} >
+                        <option value="State1">State1</option>
+                        <option value="State2">State2</option>
+                        <option value="State3">State3</option>
+                        </Form.Select>
+                        </Col>
+                        </Form.Group>
                         <Form.Label>Password:</Form.Label>
                         <Form.Control type="password" onChange = {(e)=>setPassword(e.target.value)}/>
                         <Form.Label>Confirm Password:</Form.Label>

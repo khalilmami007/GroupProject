@@ -91,6 +91,33 @@ module.exports.deleteDeveloper = (request, response) => {
         .then(deleteConfirmation => response.json(deleteConfirmation))
         .catch(err => response.json(err))
 }
-
+module.exports.getAllDevelopersWithSkills = (request, response) => {
+    Developer.aggregate([
+      {
+        $lookup: {
+          from: 'skills',
+          localField: '_id',
+          foreignField: 'devId',
+          as: 'developerskills',
+        },
+      },
+      {
+        $project: {
+          _id: 1,
+          firstName: 1,
+          lastName: 1,
+          bio: '$developerskills.bio',
+          languages: '$developerskills.languages',
+        },
+      },
+    ])
+      .then((data) => {
+        response.json(data);
+      })
+      .catch((err) => {
+        console.error(err);
+        response.json(err);
+      });
+  };
 
 
