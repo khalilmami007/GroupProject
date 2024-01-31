@@ -11,8 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 const port = process.env.PORT
 
 const Routes = require("./routes/developer.routes")
+const orgRoutes = require("./routes/org.routes")
+const positionroute= require("./routes/position.routes")
 Routes(app)
-
+orgRoutes(app)
+positionroute(app);
 
 app.listen(port, () => {
     console.log(`>>>>> Server is running on Port ${port} 🎈🎈🎈`)

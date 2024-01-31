@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
-import { useNavigate, Link ,useParams} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import SubHeader from './SubHeader';
-import CardHeader from 'react-bootstrap/esm/CardHeader';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -19,7 +17,6 @@ const Languages = (props) => {
     console.log("dans languages developer number  "+props.devId)
     
 const [languages, setLanguages] = useState([]); 
-const [frameworks, setFrameworks] = useState([]); 
 const [bio, setBio] = useState(""); 
 const [lang1, setLang1] = useState(""); 
 const [lang2, setLang2] = useState(""); 
@@ -28,9 +25,7 @@ const [lang4, setLang4] = useState("");
 const [lang5, setLang5] = useState(""); 
 const [count, setCount] = useState(1); 
 const [now, setNow] = useState(0); 
-const [errors, setErrors] = useState([]);
 const navigate = useNavigate();
-const [dev, setDev] = useState({})
 console.log(lang1)
    const AddSkills = (e) => {
        e.preventDefault();
@@ -39,14 +34,7 @@ console.log(lang1)
                     console.log(res.data)
                     navigate("/devs/skills/frameworks/"+res.data.Skill._id)
                 })
-                .catch(err=>{
-                    const errorResponse = err.response.data.errors; 
-                    const errorArr = []; 
-                    for (const key of Object.keys(errorResponse)) { 
-                        errorArr.push(errorResponse[key].message)
-                    }
-                    setErrors(errorArr);
-                })       
+                .catch( err => console.log(err) )    
    }
    const AddLang = (url,lang) => {
          setNow(now+20)

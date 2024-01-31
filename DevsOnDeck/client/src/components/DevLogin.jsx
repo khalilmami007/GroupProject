@@ -14,7 +14,6 @@ const DevLogin=(props)=>{
     const [password, setPassword] = useState([]);
 
 const navigate = useNavigate();
-const [errors, setErrors] = useState([]);
 
   const LoginHandler = (e) => {
     e.preventDefault();

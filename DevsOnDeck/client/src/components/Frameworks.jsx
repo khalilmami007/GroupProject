@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
-import { useNavigate, Link ,useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import SubHeader from './SubHeader';
-import CardHeader from 'react-bootstrap/esm/CardHeader';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -16,8 +14,6 @@ import Col from 'react-bootstrap/Col';
 const Frameworks = (props) => {
     
     const {id} = useParams(); 
-    console.log("dans framewors developer number from frameworks "+props.devId)
-    
 
 const [frameworks, setFrameworks] = useState([]); 
 const [profile, setProfile] = useState(""); 
@@ -28,10 +24,6 @@ const [lang4, setLang4] = useState("");
 const [lang5, setLang5] = useState(""); 
 const [count, setCount] = useState(1); 
 const [now, setNow] = useState(0); 
-const [errors, setErrors] = useState([]);
-const navigate = useNavigate();
-const [dev, setDev] = useState({})
-console.log(lang1)
 const AddSkills = (e) => {
     e.preventDefault();
     axios.patch('http://localhost:8000/api/skills/frameworks/'+id, {
@@ -92,14 +84,14 @@ const AddSkills = (e) => {
             <div  className='iconcontainer'>
         <table>
             <tr>
-                <td> <img src={require("./icons/csharp.jpg")} id="csharp" alt="csharp" className='iconStyle'
-                onClick={() => AddLang("./icons/csharp.jpg","csharp")}/></td>
-                <td><img src={require("./icons/css.png")}id="css" alt="css" className='iconStyle'
-                onClick={() => AddLang("./icons/css.png","css")}/></td>
-                <td><img src={require("./icons/go.jpg")} id="go" alt="go" className='iconStyle'
-                onClick={() => AddLang("./icons/go.jpg","go")}/></td>
-                <td><img src={require("./icons/html.jpg")}id="html" alt="html" className='iconStyle'
-                onClick={() => AddLang("./icons/html.jpg","html")} /></td>
+                <td> <img src={require("./icons/django.png")} id="django" alt="django" className='iconStyle'
+                onClick={() => AddLang("./icons/django.png","django")}/></td>
+                <td><img src={require("./icons/flask-horizontal.png")}id="flask" alt="flask" className='iconStyle'
+                onClick={() => AddLang("./icons/flask-horizontal.png","flask")}/></td>
+                <td><img src={require("./icons/rails.png")} id="rails" alt="rails" className='iconStyle'
+                onClick={() => AddLang("./icons/rails.png","rails")}/></td>
+                <td><img src={require("./icons/spring.png")}id="spring" alt="spring" className='iconStyle'
+                onClick={() => AddLang("./icons/spring.png","spring")} /></td>
             </tr>
             <tr>
             <td> <img src={require("./icons/java.png")} id="java" alt="java" className='iconStyle'
